@@ -58,31 +58,20 @@
             </table>
 
             <br>
-            <h3>スキル</h3>
+            <h3>職務経歴</h3>
             <table class="table table-striped">
+                <thead class="thead-dark">
                 <tr>
-                    <th>氏名</th>
-                    <td th:text="${basic.userName}"></td>
+                    <th>期間</th>
+                    <th>プロジェクト内容</th>
+                    <th>使用技術</th>
+
                 </tr>
-                <tr>
-                    <th>生年月日</th>
-                    <td th:text="${basic.birthday}"></td>
-                </tr>
-                <tr>
-                    <th>性別</th>
-                    <td th:text="${basic.gender}"></td>
-                </tr>
-                <tr>
-                    <th>住所</th>
-                    <td th:text="${basic.address}"></td>
-                </tr>
-                <tr>
-                    <th>電話番号</th>
-                    <td th:text="${basic.tel}"></td>
-                </tr>
-                <tr>
-                    <th>メールアドレス</th>
-                    <td th:text="${basic.mail}"></td>
+                </thead>
+                <tr th:each="content : ${projects}">
+                    <td><div th:text="${content.period}"></td>
+                    <td><div th:text="${content.content}"></td>
+                    <td><div th:text="${content.skill}"></td>
                 </tr>
             </table>
             <div class="col-2">

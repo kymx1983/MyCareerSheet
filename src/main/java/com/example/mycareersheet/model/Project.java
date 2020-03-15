@@ -1,4 +1,5 @@
 package com.example.mycareersheet.model;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -22,6 +23,9 @@ public class Project {
 
   @Column(name = "project_end")
   private Date end;
+
+  @Column(name = "title")
+  private String title;
 
   @Column(name = "overview")
   private String overview;
@@ -65,6 +69,14 @@ public class Project {
 
   public void setEnd(Date end) {
     this.end = end;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
   }
 
   public String getOverview() {
