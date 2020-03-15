@@ -7,9 +7,16 @@ import com.example.mycareersheet.repository.BasicInfoRepository;
 import com.example.mycareersheet.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,27 +43,15 @@ public class IndexController {
     ModelAndView model = new ModelAndView();
     model.setViewName("index");
 
-    Optional<BasicInfo> basic = basicRepository.findById((long)1);
-    if(basic.isPresent()){
+    Optional<BasicInfo> basic = basicRepository.findById((long) 1);
+    if (basic.isPresent()) {
       model.addObject("basic", basic.get());
     } else {
       System.out.println("データがありません");
     }
 
     List<Project> projects = projectRepository.findAll();
-    
-    List<ProjectEntity> list = new ArrayList<>();
-
-    for (Project project : projects) {
-      ProjectEntity entity = new ProjectEntity(project);
-      System.out.println("表示します");
-      System.out.println("title:" + project.getTitle());
-      list.add(entity);
-    }
-
-    System.out.println("list件数:" + list.size());
-    
-    model.addObject("projects", list);
+    model.addObject("projects", projects);
 
     int count = projects.size();
     System.out.println("件数：" + count);
@@ -64,4 +59,34 @@ public class IndexController {
     return model;
   }
 
+  /**
+   * 職務経歴の編集画面を表示する
+   *
+   * @return model
+   */
+  @RequestMapping("/projectCreateView")
+  public ModelAndView projectCreateView() {
+
+    ModelAndView model = new ModelAndView();
+    ;
+    model.setViewName("careerEdit");
+    model.addObject("content", new Project());
+
+    return model;
+  }
+
+  /**
+   * お問い合わせの新規作成及び更新を行う.
+   *
+   * @param project Contactエンティティ
+   * @return model
+   */
+  @RequestMapping(value = "/projectCreate", method = RequestMethod.POST)
+  @Transactional(readOnly = false)
+  public ModelAndView create(@ModelAttribute("content") @Validated Project project) {
+
+    projectRepository.saveAndFlush(project);
+    return new ModelAndView("redirect:/");
+  }
 }
+

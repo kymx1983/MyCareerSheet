@@ -12,17 +12,22 @@ import java.util.Date;
 public class Project {
   @Id
   @Column(name = "career_id")
-  private long CareerId;
+  private long id;
 
   @Column(name = "user_id")
   private long UserId;
 
-  @Column(name = "project_from")
-  @NotEmpty
-  private Date from;
+  @Column(name = "from_year")
+  private int from_year;
 
-  @Column(name = "project_end")
-  private Date end;
+  @Column(name = "from_month")
+  private int from_month;
+
+  @Column(name = "end_year")
+  private int end_year;
+
+  @Column(name = "end_month")
+  private int end_month;
 
   @Column(name = "title")
   private String title;
@@ -39,12 +44,12 @@ public class Project {
   @Column(name = "skill")
   private String skill;
 
-  public long getCareerId() {
-    return CareerId;
+  public long getId() {
+    return id;
   }
 
-  public void setCareerId(long careerId) {
-    CareerId = careerId;
+  public void setId(long id) {
+    this.id = id;
   }
 
   public long getUserId() {
@@ -55,20 +60,36 @@ public class Project {
     UserId = userId;
   }
 
-  public Date getFrom() {
-    return from;
+  public int getFrom_year() {
+    return from_year;
   }
 
-  public void setFrom(Date from) {
-    this.from = from;
+  public void setFrom_year(int from_year) {
+    this.from_year = from_year;
   }
 
-  public Date getEnd() {
-    return end;
+  public int getFrom_month() {
+    return from_month;
   }
 
-  public void setEnd(Date end) {
-    this.end = end;
+  public void setFrom_month(int from_month) {
+    this.from_month = from_month;
+  }
+
+  public int getEnd_year() {
+    return end_year;
+  }
+
+  public void setEnd_year(int end_year) {
+    this.end_year = end_year;
+  }
+
+  public int getEnd_month() {
+    return end_month;
+  }
+
+  public void setEnd_month(int end_month) {
+    this.end_month = end_month;
   }
 
   public String getTitle() {

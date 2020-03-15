@@ -9,18 +9,6 @@ public class ProjectEntity {
 
   private String skill;
 
-  public ProjectEntity (Project project){
-    this.period = "";
-    period = project.getFrom().toString();
-    period += "<br>>";
-    period += project.getEnd();
-
-    content = "内容です";
-
-    skill = "使用技術です";
-
-  }
-
   public String getPeriod() {
     return period;
   }

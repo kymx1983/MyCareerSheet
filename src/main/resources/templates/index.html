@@ -31,6 +31,13 @@
             <br>
             <h3>基本情報</h3>
             <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th>項目名</th>
+                    <th>内容</th>
+
+                </tr>
+                </thead>
                 <tr>
                     <th>氏名</th>
                     <td th:text="${basic.userName}"></td>
@@ -69,9 +76,23 @@
                 </tr>
                 </thead>
                 <tr th:each="content : ${projects}">
-                    <td><div th:text="${content.period}"></td>
-                    <td><div th:text="${content.content}"></td>
-                    <td><div th:text="${content.skill}"></td>
+
+                    <td>
+                        <span th:text="${content.from_year}">2005</span>年<span th:text="${content.from_month}">3</span>月
+                        <br>〜 <br>
+                        <span th:text="${content.end_year}">2005</span>年<span th:text="${content.end_month}">4</span>月
+                    </td>
+                    <td>
+                        <b>プロジェクト名</b><br>
+                        <div th:text="${content.title}"></div>
+                        <br>
+                        <b>概要</b><br>
+                        <div th:text="${content.overview}"></div>
+                        <br>
+                        <b>担当業務</b><br>
+                        <div th:text="${content.charge}"></div>
+                    </td>
+                    <td><div th:text="${content.skill}"></div></td>
                 </tr>
             </table>
             <div class="col-2">
