@@ -1,0 +1,6 @@
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/my_career_sheet?useSSL=false&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: passexcel
