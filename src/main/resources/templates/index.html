@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"></link>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -29,45 +29,42 @@
         </div>
         <div class="col-8  ml-100 border border-dark">
             <br>
-            <h3>基本情報</h3>
-            <table class="table table-striped">
-                <thead class="thead-dark">
+            <h1>基本情報</h1>
+            <table>
                 <tr>
-                    <th>項目名</th>
+                    <th>項目</th>
                     <th>内容</th>
-
-                </tr>
-                </thead>
-                <tr>
-                    <th>氏名</th>
-                    <td th:text="${basic.userName}"></td>
                 </tr>
                 <tr>
-                    <th>生年月日</th>
-                    <td th:text="${basic.birthday}"></td>
+                    <td>氏名</td>
+                    <td th:text="${basic.userName}">テスト太郎</td>
                 </tr>
                 <tr>
-                    <th>性別</th>
-                    <td th:text="${basic.gender}"></td>
+                    <td>生年月日</td>
+                    <td th:text="${basic.birthday}">1938年2月15日</td>
                 </tr>
                 <tr>
-                    <th>住所</th>
-                    <td th:text="${basic.address}"></td>
+                    <td>性別</td>
+                    <td th:text="${basic.gender}">男</td>
                 </tr>
                 <tr>
-                    <th>電話番号</th>
-                    <td th:text="${basic.tel}"></td>
+                    <td>住所</td>
+                    <td th:text="${basic.address}">東京都府中市白糸台５−４５−８　アブウーノ　１０４</td>
                 </tr>
                 <tr>
-                    <th>メールアドレス</th>
-                    <td th:text="${basic.mail}"></td>
+                    <td>電話番号</td>
+                    <td th:text="${basic.tel}">090-6453-4857</td>
+                </tr>
+                <tr>
+                    <td>メールアドレス</td>
+                    <td th:text="${basic.mail}">kymx1983@gmail.com</td>
                 </tr>
             </table>
 
             <br>
             <h3>職務経歴</h3>
-            <table class="table table-striped">
-                <thead class="thead-dark">
+            <table>
+                <thead>
                 <tr>
                     <th>期間</th>
                     <th>プロジェクト内容</th>
@@ -92,7 +89,9 @@
                         <b>担当業務</b><br>
                         <div th:text="${content.charge}"></div>
                     </td>
-                    <td><div th:text="${content.skill}"></div></td>
+                    <td>
+                        <div th:text="${content.skill}"></div>
+                    </td>
                 </tr>
             </table>
             <div class="col-2">
@@ -112,5 +111,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
             integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
             crossorigin="anonymous"></script>
+
+</div>
 </body>
 </html>
