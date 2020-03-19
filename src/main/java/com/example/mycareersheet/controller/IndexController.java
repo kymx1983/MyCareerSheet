@@ -60,7 +60,7 @@ public class IndexController {
 
     List<Skill> skills = skillRepository.findAll();
     model.addObject("skills", skills);
-    
+
     return model;
   }
 
@@ -88,10 +88,21 @@ public class IndexController {
    */
   @RequestMapping(value = "/projectCreate", method = RequestMethod.POST)
   @Transactional(readOnly = false)
-  public ModelAndView create(@ModelAttribute("content") @Validated Project project) {
+  public ModelAndView create(@ModelAttribute("content") @Validated Project project, BindingResult result) {
 
-    projectRepository.saveAndFlush(project);
-    return new ModelAndView("redirect:/");
+    if (result.hasErrors()) {
+      for (FieldError err : result.getFieldErrors()) {
+        System.out.println(err.getDefaultMessage());
+      }
+      ModelAndView model = new ModelAndView();
+      model.setViewName("projectCreateView");
+      model.addObject("content", project);
+      return model;
+    } else {
+      projectRepository.saveAndFlush(project);
+      return new ModelAndView("redirect:/");
+    }
   }
+
 }
 
