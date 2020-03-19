@@ -60,10 +60,7 @@ public class IndexController {
 
     List<Skill> skills = skillRepository.findAll();
     model.addObject("skills", skills);
-
-    int count = projects.size();
-    System.out.println("件数：" + count);
-
+    
     return model;
   }
 
