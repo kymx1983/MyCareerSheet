@@ -2,116 +2,98 @@
 <html lang="ja">
 <head>
     <title>Contact Form</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"></link>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
 </head>
 <body>
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a href="/" class="navbar-brand">Contact Form</a>
-    <div class="navbar-nav collapse navbar-collapse justify-content-end">
-        <a class="nav-item nav-link" href="#">経歴編集</a>
-        <a class="nav-item nav-link" href="#">経歴出力</a>
-        <a class="nav-item nav-link" href="#">テスト太郎さん</a>
+
+<header>
+    <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+</header>
+
+<div class="main">
+    <div class="container">
+        <h1>基本情報</h1>
+        <table>
+            <tr>
+                <th>項目</th>
+                <th>内容</th>
+            </tr>
+            <tr>
+                <td>氏名</td>
+                <td th:text="${basic.userName}">テスト太郎</td>
+            </tr>
+            <tr>
+                <td>生年月日</td>
+                <td th:text="${basic.birthday}">1938年2月15日</td>
+            </tr>
+            <tr>
+                <td>性別</td>
+                <td th:text="${basic.gender}">男</td>
+            </tr>
+            <tr>
+                <td>住所</td>
+                <td th:text="${basic.address}">東京都府中市白糸台５−４５−８　アブウーノ　１０４</td>
+            </tr>
+            <tr>
+                <td>電話番号</td>
+                <td th:text="${basic.tel}">090-6453-4857</td>
+            </tr>
+            <tr>
+                <td>メールアドレス</td>
+                <td th:text="${basic.mail}">kymx1983@gmail.com</td>
+            </tr>
+        </table>
+        <br>
+        <a href="#" class="btn-flat-border">編集</a>
     </div>
-</nav>
+    <div class="container">
+        <h1>職務経歴</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>期間</th>
+                <th>プロジェクト内容</th>
+                <th>使用技術</th>
 
-<br>
+            </tr>
+            </thead>
+            <tr th:each="content : ${projects}">
 
-<div class="container-fluid">
-    <div class="row box-container">
+                <td>
+                    <span th:text="${content.from_year}">2005</span>年<span th:text="${content.from_month}">3</span>月
+                    <br>〜 <br>
+                    <span th:text="${content.end_year}">2005</span>年<span th:text="${content.end_month}">4</span>月
+                </td>
+                <td>
+                    <b>プロジェクト名</b><br>
+                    <div th:text="${content.title}"></div>
+                    <br>
+                    <b>概要</b><br>
+                    <div th:text="${content.overview}"></div>
+                    <br>
+                    <b>担当業務</b><br>
+                    <div th:text="${content.charge}"></div>
+                    <br>
+                </td>
+                <td>
+                    <div th:text="${content.skill}"></div>
+                </td>
+            </tr>
+        </table>
+
+        <br>
+        <a href="/projectCreateView" class="btn-flat-border">追加</a>
+
         <div class="col-2">
         </div>
-        <div class="col-8  ml-100 border border-dark">
-            <br>
-            <h1>基本情報</h1>
-            <table>
-                <tr>
-                    <th>項目</th>
-                    <th>内容</th>
-                </tr>
-                <tr>
-                    <td>氏名</td>
-                    <td th:text="${basic.userName}">テスト太郎</td>
-                </tr>
-                <tr>
-                    <td>生年月日</td>
-                    <td th:text="${basic.birthday}">1938年2月15日</td>
-                </tr>
-                <tr>
-                    <td>性別</td>
-                    <td th:text="${basic.gender}">男</td>
-                </tr>
-                <tr>
-                    <td>住所</td>
-                    <td th:text="${basic.address}">東京都府中市白糸台５−４５−８　アブウーノ　１０４</td>
-                </tr>
-                <tr>
-                    <td>電話番号</td>
-                    <td th:text="${basic.tel}">090-6453-4857</td>
-                </tr>
-                <tr>
-                    <td>メールアドレス</td>
-                    <td th:text="${basic.mail}">kymx1983@gmail.com</td>
-                </tr>
-            </table>
-
-            <br>
-            <h3>職務経歴</h3>
-            <table>
-                <thead>
-                <tr>
-                    <th>期間</th>
-                    <th>プロジェクト内容</th>
-                    <th>使用技術</th>
-
-                </tr>
-                </thead>
-                <tr th:each="content : ${projects}">
-
-                    <td>
-                        <span th:text="${content.from_year}">2005</span>年<span th:text="${content.from_month}">3</span>月
-                        <br>〜 <br>
-                        <span th:text="${content.end_year}">2005</span>年<span th:text="${content.end_month}">4</span>月
-                    </td>
-                    <td>
-                        <b>プロジェクト名</b><br>
-                        <div th:text="${content.title}"></div>
-                        <br>
-                        <b>概要</b><br>
-                        <div th:text="${content.overview}"></div>
-                        <br>
-                        <b>担当業務</b><br>
-                        <div th:text="${content.charge}"></div>
-                    </td>
-                    <td>
-                        <div th:text="${content.skill}"></div>
-                    </td>
-                </tr>
-            </table>
-            <div class="col-2">
-            </div>
-        </div>
     </div>
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
-            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-            crossorigin="anonymous"></script>
-
+</div>
 </div>
 </body>
 </html>
