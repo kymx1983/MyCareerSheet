@@ -3,8 +3,10 @@ package com.example.mycareersheet.controller;
 import com.example.mycareersheet.entity.ProjectEntity;
 import com.example.mycareersheet.model.BasicInfo;
 import com.example.mycareersheet.model.Project;
+import com.example.mycareersheet.model.Skill;
 import com.example.mycareersheet.repository.BasicInfoRepository;
 import com.example.mycareersheet.repository.ProjectRepository;
+import com.example.mycareersheet.repository.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +35,9 @@ public class IndexController {
   @Autowired
   ProjectRepository projectRepository;
 
+  @Autowired
+  SkillRepository skillRepository;
+
   /**
    * お問い合わせの一覧を表示する.
    *
@@ -52,6 +57,9 @@ public class IndexController {
 
     List<Project> projects = projectRepository.findAll();
     model.addObject("projects", projects);
+
+    List<Skill> skills = skillRepository.findAll();
+    model.addObject("skills", skills);
 
     int count = projects.size();
     System.out.println("件数：" + count);

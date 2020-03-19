@@ -53,6 +53,38 @@
         <a href="#" class="btn-flat-border">編集</a>
     </div>
     <div class="container">
+        <h1>スキル</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>スキル</th>
+                <th>期間</th>
+                <th>スキルレベル</th>
+
+            </tr>
+            </thead>
+            <tr th:each="content : ${skills}">
+
+                <td>
+                    <div th:text="${content.skillName}">Java</div>
+                </td>
+                <td>
+                    <div th:text="${content.period}">15</div>
+                </td>
+                <td>
+                    <div th:text="${content.level}">難易度の高いプログラムを作成加納</div>
+                </td>
+            </tr>
+        </table>
+
+        <br>
+        <a href="/projectCreateView" class="btn-flat-border">追加</a>
+
+        <div class="col-2">
+        </div>
+    </div>
+
+    <div class="container">
         <h1>職務経歴</h1>
         <table>
             <thead>

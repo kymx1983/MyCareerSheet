@@ -15,7 +15,6 @@ public class Skill {
   @Column(name = "skill_id")
   private long skillId;
 
-  @Id
   @Column(name = "user_id")
   private long userId;
 
