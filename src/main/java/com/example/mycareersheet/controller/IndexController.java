@@ -16,6 +16,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Timestamp;
@@ -76,6 +77,24 @@ public class IndexController {
     ;
     model.setViewName("careerEdit");
     model.addObject("content", new Project());
+
+    return model;
+  }
+
+  /**
+   * 職務経歴の編集画面を表示する
+   *
+   * @return model
+   */
+  @RequestMapping("/projectEditView")
+  public ModelAndView projectEditView(@RequestParam long id) {
+
+    ModelAndView model = new ModelAndView();
+    model.setViewName("careerEdit");
+
+    Optional<Project> data = projectRepository.findById(id);
+
+    model.addObject("content", data.get());
 
     return model;
   }

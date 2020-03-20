@@ -60,7 +60,6 @@
                 <th>スキル</th>
                 <th>期間</th>
                 <th>スキルレベル</th>
-
             </tr>
             </thead>
             <tr th:each="content : ${skills}">
@@ -92,7 +91,7 @@
                 <th>期間</th>
                 <th>プロジェクト内容</th>
                 <th>使用技術</th>
-
+                <th></th>
             </tr>
             </thead>
             <tr th:each="content : ${projects}">
@@ -115,6 +114,12 @@
                 </td>
                 <td>
                     <div th:text="${content.skill}"></div>
+                </td>
+                <td>
+                    <form method="post" action="/projectEditView">
+                        <input type="hidden" name="id" th:value="${content.id}"></input>
+                        <input type="submit" class="btn-flat-border" value="詳細">
+                    </form>
                 </td>
             </tr>
         </table>
