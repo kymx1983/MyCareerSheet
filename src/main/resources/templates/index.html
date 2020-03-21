@@ -82,7 +82,7 @@
         </table>
 
         <br>
-        <a href="/projectCreateView" class="btn-flat-border">追加</a>
+        <a href="/skill/new" class="btn-flat-border">新規登録</a>
 
         <div class="col-2">
         </div>
@@ -121,7 +121,7 @@
                     <div th:text="${content.skill}"></div>
                 </td>
                 <td>
-                    <form method="post" action="/projectEditView">
+                    <form method="post" action="/project/edit">
                         <input type="hidden" name="id" th:value="${content.id}"></input>
                         <input type="submit" class="btn-flat-border" value="詳細">
                     </form>
@@ -130,7 +130,7 @@
         </table>
 
         <br>
-        <a href="/projectCreateView" class="btn-flat-border">追加</a>
+        <a href="/project/new" class="btn-flat-border">追加</a>
 
         <div class="col-2">
         </div>

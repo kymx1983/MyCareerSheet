@@ -67,12 +67,12 @@ public class IndexController {
    *
    * @return model
    */
-  @RequestMapping("/projectCreateView")
+  @RequestMapping("/project/new")
   public ModelAndView projectCreateView() {
 
     ModelAndView model = new ModelAndView();
     ;
-    model.setViewName("career/edit.html");
+    model.setViewName("project/edit.html");
     model.addObject("content", new Project());
 
     return model;
@@ -83,11 +83,11 @@ public class IndexController {
    *
    * @return model
    */
-  @RequestMapping("/projectEditView")
+  @RequestMapping("/project/edit")
   public ModelAndView projectEditView(@RequestParam long id) {
 
     ModelAndView model = new ModelAndView();
-    model.setViewName("edit.html");
+    model.setViewName("project/edit.html");
 
     Optional<Project> data = projectRepository.findById(id);
 
@@ -102,7 +102,7 @@ public class IndexController {
    * @param project Contactエンティティ
    * @return model
    */
-  @RequestMapping(value = "/projectCreate", method = RequestMethod.POST)
+  @RequestMapping(value = "/project/create", method = RequestMethod.POST)
   @Transactional(readOnly = false)
   public ModelAndView create(@ModelAttribute("content") @Validated Project project, BindingResult result) {
 
@@ -111,7 +111,7 @@ public class IndexController {
         System.out.println(err.getDefaultMessage());
       }
       ModelAndView model = new ModelAndView();
-      model.setViewName("career/edit.html");
+      model.setViewName("project/edit.html");
       model.addObject("content", project);
       return model;
     } else {

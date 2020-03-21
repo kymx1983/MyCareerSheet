@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
 
-    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"></link>
+    <link href="../../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"></link>
 
 </head>
 <body>
@@ -23,7 +23,7 @@
 <div class="main">
     <div class="container">
         <h1>職務経歴</h1>
-        <form method="post" action="/projectCreate" th:object="${content}">
+        <form method="post" action="/project/create" th:object="${content}">
             <input type="hidden" name="id" th:value="${content.id}">
 
             <div class="form-group">
@@ -89,7 +89,7 @@
             <br>
             <input type="submit" class="btn-flat-border" value="確定">　
             <a href="#" th:href="@{/delete/(id=${content.id})}" class="btn btn-flat-border">削除</a>　
-            <a href="/" class="btn-flat-border">キャンセル</a>
+            <a href="/static" class="btn-flat-border">キャンセル</a>
 
             <br><br>
         </form>
