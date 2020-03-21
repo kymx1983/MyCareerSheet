@@ -1,6 +1,5 @@
 package com.example.mycareersheet.controller;
 
-import com.example.mycareersheet.entity.ProjectEntity;
 import com.example.mycareersheet.model.BasicInfo;
 import com.example.mycareersheet.model.Project;
 import com.example.mycareersheet.model.Skill;
@@ -19,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,7 +72,7 @@ public class IndexController {
 
     ModelAndView model = new ModelAndView();
     ;
-    model.setViewName("careerEdit");
+    model.setViewName("career/edit.html");
     model.addObject("content", new Project());
 
     return model;
@@ -90,7 +87,7 @@ public class IndexController {
   public ModelAndView projectEditView(@RequestParam long id) {
 
     ModelAndView model = new ModelAndView();
-    model.setViewName("careerEdit");
+    model.setViewName("edit.html");
 
     Optional<Project> data = projectRepository.findById(id);
 
@@ -114,7 +111,7 @@ public class IndexController {
         System.out.println(err.getDefaultMessage());
       }
       ModelAndView model = new ModelAndView();
-      model.setViewName("projectCreateView");
+      model.setViewName("career/edit.html");
       model.addObject("content", project);
       return model;
     } else {

@@ -30,18 +30,22 @@ public class Project {
   private int end_month;
 
   @Column(name = "title")
+  @NotEmpty(message = "タイトルを入力してください。")
   private String title;
 
   @Column(name = "overview")
+  @NotEmpty(message = "概要を入力してください。")
   private String overview;
 
   @Column(name = "charge")
+  @NotEmpty(message = "担当業務を入力してください。")
   private String charge;
 
   @Column(name = "remarks")
   private String remarks;
 
   @Column(name = "skill")
+  @NotEmpty(message = "スキルを入力してください。")
   private String skill;
 
   public long getId() {

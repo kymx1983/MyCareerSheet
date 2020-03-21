@@ -57,12 +57,17 @@
         <table>
             <thead>
             <tr>
+                <th>タイプ</th>
                 <th>スキル</th>
                 <th>期間</th>
                 <th>スキルレベル</th>
             </tr>
             </thead>
             <tr th:each="content : ${skills}">
+
+                <td>
+                    <div th:text="${content.type}">Java</div>
+                </td>
 
                 <td>
                     <div th:text="${content.skillName}">Java</div>

@@ -52,6 +52,7 @@
 
             <div class="form-group">
                 <h2><label>タイトル:</label></h2>
+                <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" th:errorclass="errs"></div>
                 <div class="input-content">
                     <textarea class="content-area" name="title" rows="3" th:field="${content.title}"></textarea>
                 </div>
@@ -60,6 +61,7 @@
 
             <div class="form-group">
                 <h2><label>内容:</label></h2>
+                <div th:if="${#fields.hasErrors('overview')}" th:errors="*{overview}" th:errorclass="errs"></div>
                 <div class="input-content">
                     <textarea class="content-area" name="overview" rows="3" th:field="${content.overview}"></textarea>
                 </div>
@@ -68,6 +70,7 @@
 
             <div class="form-group">
                 <h2><label>担当業務:</label></h2>
+                <div th:if="${#fields.hasErrors('charge')}" th:errors="*{charge}" th:errorclass="errs"></div>
                 <div class="input-content">
                     <textarea class="content-area" name="charge" rows="3" th:field="${content.charge}"></textarea>
                 </div>
@@ -76,10 +79,10 @@
 
             <div class="form-group">
                 <h2><label>使用技術:</label></h2>
+                <div th:if="${#fields.hasErrors('skill')}" th:errors="*{skill}" th:errorclass="errs"></div>
                 <div class="input-content">
                     <textarea class="content-area" name="skill" rows="3" th:field="${content.skill}"></textarea>
                 </div>
-                <div th:if="${#fields.hasErrors('skill')}" th:errors="*{skill}" th:errorclass="err"></div>
             </div>
 
             <hr>

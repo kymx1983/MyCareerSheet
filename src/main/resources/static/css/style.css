@@ -136,3 +136,8 @@ header {
     width: 500px;
     font-size: 14px;
 }
+
+.errs{
+    color: red;
+    background-color: pink;
+}

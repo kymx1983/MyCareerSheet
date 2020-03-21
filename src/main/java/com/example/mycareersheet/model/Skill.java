@@ -18,6 +18,9 @@ public class Skill {
   @Column(name = "user_id")
   private long userId;
 
+  @Column(name = "type")
+  private String type;
+
   @Column(name = "skill_name")
   private String skillName;
 
@@ -41,6 +44,14 @@ public class Skill {
 
   public void setUserId(long userId) {
     this.userId = userId;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
   }
 
   public String getSkillName() {
